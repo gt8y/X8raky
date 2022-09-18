@@ -1,6 +1,6 @@
 FROM alpine:edge
 #  this uuid doesnot work any more date 0403
-ARG AUUID="8a8x23x8x-gckm-7r08-bc40-bh62kp5qwr5df"
+ARG AUUID="c065e872-2323-49e7-8f37-b790099493b5"
 ARG CADDYIndexPage="https://github.com/PavelDoGreat/WebGL-Fluid-Simulation/archive/master.zip"
 ARG ParameterSSENCYPT="chacha20-ietf-poly1305"
 ARG PORT=80

@@ -1,9 +1,10 @@
 FROM alpine:edge
+ENV CONFIG_JSON=none
 #  this uuid doesnot work any more date 0403
 ARG AUUID="cace7df7-7b05-47b6-8b3a-e8faf62322e5"
 ARG CADDYIndexPage="https://github.com/PavelDoGreat/WebGL-Fluid-Simulation/archive/master.zip"
 ARG ParameterSSENCYPT="chacha20-ietf-poly1305"
-ARG PORT=8089  #原 80 ，221009 改部署mogniss,,
+# ARG PORT=8089  #原 80 ，221009 改部署mogniss,,
 
 ADD etc/Caddyfile /tmp/Caddyfile
 ADD etc/xray.json /tmp/xray.json
@@ -22,5 +23,6 @@ RUN apk update && \
     cat /tmp/xray.json | sed -e "s/\$AUUID/$AUUID/g" -e "s/\$ParameterSSENCYPT/$ParameterSSENCYPT/g" >/xray.json
 
 RUN chmod +x /start.sh
-
+ENTRYPOINT ["sh", "/configure.sh"]  #221009 jia 
+EXPOSE 80  #221009 jia 
 CMD /start.sh
